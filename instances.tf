@@ -70,6 +70,13 @@ resource "aws_instance" "bastion" {
   vpc_security_group_ids      = [aws_security_group.ssh_from_anywhere.id]
   associate_public_ip_address = var.machine_details.public_ip
 
+  user_data = <<-EOF
+    #!/bin/bash
+    echo '${tls_private_key.key_pair.private_key_pem}' > /home/ubuntu/key.pem
+    chmod 400 /home/ubuntu/key.pem
+    chown ubuntu:ubuntu /home/ubuntu/key.pem
+  EOF
+  
   provisioner "local-exec" {
     command = "echo ${self.public_ip} >> bstianIP.txt"
   }
