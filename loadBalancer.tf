@@ -1,6 +1,6 @@
 # Define a security group for alb
 resource "aws_security_group" "alb_sg" {
-  vpc_id        = module.network.vpc_id
+  vpc_id        = module.network-lab2.vpc_id
 
   ingress {
     from_port   = 80
