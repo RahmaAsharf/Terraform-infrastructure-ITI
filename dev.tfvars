@@ -17,7 +17,6 @@ subnets_details = [
     type              = "public",
     availability_zone = "us-east-1b"
   },
-
   {
     name              = "private1",
     cidr              = "10.0.2.0/24",
@@ -29,8 +28,13 @@ subnets_details = [
     cidr              = "10.0.3.0/24",
     type              = "private",
     availability_zone = "us-east-1c"
-  }
-
+  },
+  {
+    name              = "public2",
+    cidr              = "10.0.4.0/24",
+    type              = "public",
+    availability_zone = "us-east-1c"
+  },
 ]
 
 db_pass = "12345ra12345"
