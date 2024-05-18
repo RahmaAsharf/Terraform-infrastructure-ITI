@@ -10,16 +10,16 @@ resource "aws_security_group" "ssh_from_anywhere" {
     protocol    = "tcp"
     cidr_blocks = [var.cidr_zero]
   }
-  egress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = [var.cidr_zero]
-  }
+  # egress {
+  #   from_port   = 22
+  #   to_port     = 22
+  #   protocol    = "tcp"
+  #   cidr_blocks = [var.cidr_zero]
+  # }
   egress {
     from_port       = 0
     to_port         = 0
-    protocol        = "-1"   
+    protocol        = "all"   
     cidr_blocks     = ["0.0.0.0/0"] 
   }
 }
@@ -47,7 +47,7 @@ resource "aws_security_group" "ssh_and_3000" {
   egress {
     from_port       = 0
     to_port         = 0
-    protocol        = "-1"   
+    protocol        = "all"   
     cidr_blocks     = ["0.0.0.0/0"] 
   }
 }
